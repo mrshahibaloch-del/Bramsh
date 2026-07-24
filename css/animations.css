@@ -1,0 +1,6 @@
+@keyframes drift { from { transform:translate3d(0,0,0) scale(1); } to { transform:translate3d(-6%,9%,0) scale(1.12); } }
+@keyframes fade-up { to { opacity:1; transform:translateY(0); } }
+.hero .reveal { opacity:0; transform:translateY(20px); animation:fade-up .9s .18s var(--ease) forwards; }
+.reveal { opacity:0; transform:translateY(28px); transition:opacity .75s var(--ease),transform .75s var(--ease); }.reveal.is-visible { opacity:1; transform:translateY(0); }
+.collections-grid > .reveal:nth-child(2),.products-grid > .reveal:nth-child(2),.values__list > .reveal:nth-child(2) { transition-delay:.1s; }.collections-grid > .reveal:nth-child(3),.products-grid > .reveal:nth-child(3),.values__list > .reveal:nth-child(3) { transition-delay:.18s; }.products-grid > .reveal:nth-child(4) { transition-delay:.26s; }
+@media (prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto !important; animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; } .reveal,.hero .reveal { opacity:1; transform:none; } }
