@@ -80,7 +80,12 @@
       message.textContent = 'Sending your request…';
 
       try {
-        const url = endpoint.startsWith('http') ? endpoint : `http://localhost:3000${endpoint}`;
+        let url = endpoint;
+        if (!endpoint.startsWith('http')) {
+          // On localhost, use http://localhost:3000; on production, use relative path
+          const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+          url = isLocalhost ? `http://localhost:3000${endpoint}` : endpoint;
+        }
         console.log('Sending to:', url, 'Data:', payload);
         const response = await fetch(url, {
           method: 'POST',
